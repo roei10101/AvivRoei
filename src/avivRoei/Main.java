@@ -88,7 +88,11 @@ public class Main {
 
 
         if (isNameTaken(array, count, name)) {
-            return "The name is already taken";
+            System.out.println("The name is already taken");
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("choose another name");
+            String newName = scanner.next();
+            return addEntity(array, count, newName);
 
         }
 
