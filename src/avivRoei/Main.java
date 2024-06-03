@@ -42,16 +42,13 @@ public class Main {
                     System.out.println(addEntity(buyers, buyerCount, buyer));
                     break;
                 case 3:
-                    System.out.println("בחרת באפשרות השלישית.");
-                    // הוסף קוד כאן לביצוע פעולה מסוימת
+                    addToSeller();
                     break;
                 case 4:
-                    System.out.println("בחרת באפשרות הרביעית.");
-                    // הוסף קוד כאן לביצוע פעולה מסוימת
+                    addProductBuyer();
                     break;
                 case 5:
-                    System.out.println("בחרת באפשרות החמישית.");
-                    // הוסף קוד כאן לביצוע פעולה מסוימת
+                    chooseBuyer();
                     break;
                 case 6:
                     System.out.println("Buyers:");
