@@ -60,7 +60,6 @@ public class Main {
                 case 7:
                     System.out.println("Sellers:");
                     printEntities(sellers, sellerCount);
-                    // הוסף קוד כאן לביצוע פעולה מסוימת
                     break;
 
                 default:
@@ -68,7 +67,7 @@ public class Main {
                     break;
             }
 
-            System.out.println(); // הדפס שורה ריקה לצורך אסתטיקה
+            System.out.println();
         } while (choice != 0);
 
         scanner.close();
@@ -86,9 +85,7 @@ public class Main {
 
 
     public static String addEntity(String[] array, int count, String name) {
-        if (array == null) {
-            throw new IllegalStateException("Array is not initialized. Call initialize first.");
-        }
+
 
         if (isNameTaken(array, count, name)) {
             return "The name is already taken";
@@ -117,14 +114,12 @@ public class Main {
         return false;
     }
 
-    // פונקציה להגדלת המערך
     private static String[] expandArray(String[] array) {
         String[] newArray = new String[array.length * 2];
         System.arraycopy(array, 0, newArray, 0, array.length);
         return newArray;
     }
 
-    // פונקציה להדפסת כל המערך
     public static void printEntities(String[] propertiesList, int count) {
         for (int i = 0; i < count; i++) {
             System.out.println(propertiesList[i]);
