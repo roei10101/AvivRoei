@@ -1,3 +1,7 @@
+/*
+aviv fadlun - 324186279
+roei
+*/
 package avivRoei;
 import java.util.Scanner;
 
@@ -32,9 +36,6 @@ public class Main {
                     System.out.println("Enter the seller name");
                     String seller = scanner.next();
                     System.out.println(addEntity(sellers, sellerCount, seller));
-
-
-
                     break;
                 case 2:
                     System.out.println("Enter the buyer name");
