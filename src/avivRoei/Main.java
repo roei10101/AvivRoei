@@ -15,7 +15,14 @@ public class Main {
     private static int buyerCount;
 
     public static void main(String[] args) {
+        menu();
 
+
+    }
+
+
+
+    public static void menu() {
 
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -76,9 +83,6 @@ public class Main {
 
         scanner.close();
     }
-
-
-
 
 
 
