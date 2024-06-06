@@ -1,6 +1,6 @@
 /*
 aviv fadlun - 324186279
-roei
+roei duenyas - 212214514
 */
 package avivRoei;
 import java.util.Scanner;
