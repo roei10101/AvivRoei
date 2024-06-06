@@ -16,14 +16,11 @@ public class Main {
 
     public static void main(String[] args) {
         menu();
-
-
     }
 
 
 
     public static void menu() {
-
         Scanner scanner = new Scanner(System.in);
         int choice;
 
@@ -45,7 +42,6 @@ public class Main {
                     System.out.println("exit");
                     break;
                 case 1:
-
                     System.out.println("Enter the seller name");
                     String seller = scanner.next();
                     System.out.println(addEntity(sellers, sellerCount, seller));
@@ -77,20 +73,12 @@ public class Main {
                     System.out.println("Not good Try again");
                     break;
             }
-
             System.out.println();
         } while (choice != 0);
-
         scanner.close();
     }
 
-
-
-
-
     public static String addEntity(String[] array, int count, String name) {
-
-
         if (isNameTaken(array, count, name)) {
             System.out.println("The name is already taken");
             Scanner scanner = new Scanner(System.in);
@@ -121,7 +109,6 @@ public class Main {
         }
         return false;
     }
-
 
     private static String[] expandArray(String[] array) {
         String[] newArray = new String[array.length * 2];
@@ -164,6 +151,4 @@ public class Main {
         String buyerName = scanner.next();
 
     }
-
-
 }
