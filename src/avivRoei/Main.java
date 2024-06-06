@@ -3,11 +3,17 @@ aviv fadlun - 324186279
 roei duenyas - 212214514
 */
 package avivRoei;
+import java.lang.*;
 import java.util.Scanner;
 
 
 
 public class Main {
+    private static String[] sellers = new String[2];
+    private static int sellerCount;
+    private static String[] buyers = new String[2];
+    private static int buyerCount;
+
     public static void main(String[] args) {
 
 
@@ -72,10 +78,6 @@ public class Main {
     }
 
 
-    private static String[] sellers = new String[2];
-    private static int sellerCount;
-    private static String[] buyers = new String[2];
-    private static int buyerCount;
 
 
 
@@ -116,9 +118,15 @@ public class Main {
         return false;
     }
 
+
     private static String[] expandArray(String[] array) {
         String[] newArray = new String[array.length * 2];
         System.arraycopy(array, 0, newArray, 0, array.length);
+        if (array == sellers) {
+            sellers = newArray;
+        } else if (array == buyers) {
+            buyers = newArray;
+        }
         return newArray;
     }
 
