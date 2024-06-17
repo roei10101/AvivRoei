@@ -63,7 +63,17 @@ public class Main {
                     }
                     break;
                 case 3:
-                    addToSeller();
+                    System.out.print("Enter seller username: ");
+                    String sellerForProduct = scanner.next();
+                    System.out.print("Enter product name: ");
+                    String productName = scanner.next();
+                    System.out.print("Enter product price: ");
+                    double productPrice = scanner.nextDouble();
+                    if (manager.addProductToSeller(sellerForProduct, productName, productPrice)) {
+                        System.out.println("Product added successfully.");
+                    } else {
+                        System.out.println("Seller not found.");
+                    }
                     break;
                 case 4:
                    addProductBuyer();
@@ -87,18 +97,6 @@ public class Main {
         scanner.close();
     }
 
-
-        private static void addToSeller() {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("enter the seller name:");
-            String sellerName = scanner.next();
-            System.out.println("enter the object name:");
-            String objectName = scanner.next();
-            System.out.println("enter the object price:");
-            String objectPrice = scanner.next();
-            System.out.println("enter the object category:");
-            String objectCategory = scanner.next();
-        }
 
         public static void addProductBuyer() {
             Scanner scanner = new Scanner(System.in);

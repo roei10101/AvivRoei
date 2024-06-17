@@ -25,6 +25,15 @@ public class Manager {
         buyers.add(new Buyer(username, password, address));
         return true;
     }
+    public boolean addProductToSeller(String sellerUsername, String productName, double productPrice) {
+        for (Seller seller : sellers) {
+            if (seller.getUsername().equals(sellerUsername)) {
+                seller.addProduct(new Product(productName, productPrice));
+                return true;
+            }
+        }
+        return false; // Seller not found
+    }
 
     private boolean isUsernameTaken(String username) {
         for (Seller seller : sellers) {
