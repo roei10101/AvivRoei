@@ -9,19 +9,16 @@ import java.util.Scanner;
 
 
 public class Main {
-    private static String[] sellers = new String[2];
-    private static int sellerCount;
-    private static String[] buyers = new String[2];
-    private static int buyerCount;
+
 
     public static void main(String[] args) {
         menu();
     }
 
 
-
     public static void menu() {
         Scanner scanner = new Scanner(System.in);
+        Manager manager = new Manager();
         int choice;
 
         do {
@@ -42,31 +39,43 @@ public class Main {
                     System.out.println("exit");
                     break;
                 case 1:
-                    System.out.println("Enter the seller name");
-                    String seller = scanner.next();
-                    System.out.println(addEntity(sellers, sellerCount, seller));
+                    System.out.print("Enter seller username: ");
+                    String sellerUsername = scanner.next();
+                    System.out.print("Enter seller password: ");
+                    String sellerPassword = scanner.next();
+                    if (manager.addSeller(sellerUsername, sellerPassword)) {
+                        System.out.println("Seller added successfully.");
+                    } else {
+                        System.out.println("Username already taken.");
+                    }
                     break;
                 case 2:
-                    System.out.println("Enter the buyer name");
-                    String buyer = scanner.next();
-                    System.out.println(addEntity(buyers, buyerCount, buyer));
+                    System.out.print("Enter buyer username: ");
+                    String buyerUsername = scanner.next();
+                    System.out.print("Enter buyer password: ");
+                    String buyerPassword = scanner.next();
+                    System.out.print("Enter buyer address: ");
+                    String buyerAddress = scanner.next();
+                    if (manager.addBuyer(buyerUsername, buyerPassword,buyerAddress)) {
+                        System.out.println("Buyer added successfully.");
+                    } else {
+                        System.out.println("Username already taken.");
+                    }
                     break;
                 case 3:
                     addToSeller();
                     break;
                 case 4:
-                    addProductBuyer();
+                   addProductBuyer();
                     break;
                 case 5:
                     chooseBuyer();
                     break;
                 case 6:
-                    System.out.println("Buyers:");
-                    printEntities(buyers, buyerCount);
+                    manager.displayBuyers();
                     break;
                 case 7:
-                    System.out.println("Sellers:");
-                    printEntities(sellers, sellerCount);
+                    manager.displaySellers();
                     break;
 
                 default:
@@ -78,77 +87,33 @@ public class Main {
         scanner.close();
     }
 
-    public static String addEntity(String[] array, int count, String name) {
-        if (isNameTaken(array, count, name)) {
-            System.out.println("The name is already taken");
+
+        private static void addToSeller() {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("choose another name");
-            String newName = scanner.next();
-            return addEntity(array, count, newName);
+            System.out.println("enter the seller name:");
+            String sellerName = scanner.next();
+            System.out.println("enter the object name:");
+            String objectName = scanner.next();
+            System.out.println("enter the object price:");
+            String objectPrice = scanner.next();
+            System.out.println("enter the object category:");
+            String objectCategory = scanner.next();
+        }
+
+        public static void addProductBuyer() {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("enter the buyer name:");
+            String buyerName = scanner.next();
+            System.out.println("enter the seller name you want to buy from:");
+            String sellerName = scanner.next();
 
         }
 
-        if (count >= array.length) {
-            array = expandArray(array);
-        }
+        public static void chooseBuyer() {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("enter the buyer name who want to pay:");
+            String buyerName = scanner.next();
 
-        array[count] = name;
-        if (array == sellers) {
-            sellerCount++;
-        } else {
-            buyerCount++;
-        }
-        return "Name added successfully";
-    }
-
-    private static boolean isNameTaken(String[] array, int count, String name) {
-        for (int i = 0; i < count; i++) {
-            if (array[i].equals(name)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static String[] expandArray(String[] array) {
-        String[] newArray = new String[array.length * 2];
-        System.arraycopy(array, 0, newArray, 0, array.length);
-        if (array == sellers) {
-            sellers = newArray;
-        } else if (array == buyers) {
-            buyers = newArray;
-        }
-        return newArray;
-    }
-
-    public static void printEntities(String[] propertiesList, int count) {
-        for (int i = 0; i < count; i++) {
-            System.out.println(propertiesList[i]);
         }
     }
-    private static void addToSeller() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("enter the seller name:");
-        String sellerName = scanner.next();
-        System.out.println("enter the object name:");
-        String objectName = scanner.next();
-        System.out.println("enter the object price:");
-        String objectPrice = scanner.next();
-        System.out.println("enter the object category:");
-        String objectCategory = scanner.next();
-    }
-    public static void addProductBuyer() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("enter the buyer name:");
-        String buyerName = scanner.next();
-        System.out.println("enter the seller name you want to buy from:");
-        String sellerName = scanner.next();
 
-    }
-    public static void chooseBuyer() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("enter the buyer name who want to pay:");
-        String buyerName = scanner.next();
-
-    }
-}
