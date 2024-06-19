@@ -136,23 +136,5 @@ public class Main {
         manager.checkoutBuyerCart(buyerUsername, sellerUsername);
     }
 
-
-        public static void addProductBuyer() {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("enter the buyer name:");
-            String buyerName = scanner.next();
-            System.out.println("enter the seller name you want to buy from:");
-            String sellerName = scanner.next();
-
-        }
-
-        public static void chooseBuyer() {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("enter the buyer name who want to pay:");
-            String buyerName = scanner.next();
-
-        }
-
-
-    }
+}
 
