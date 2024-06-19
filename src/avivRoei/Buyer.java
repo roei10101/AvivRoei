@@ -58,7 +58,7 @@ public class Buyer {
         System.out.println("Total amount: $" + total);
         System.out.println("Seller: " + sellerUsername);
         System.out.println("Buyer: " + username);
-        System.out.println("Adress: " + address);
+        System.out.println("Address: " + address);
 
         orderHistory.add(new Order(new ArrayList<>(cart), new Date(), total, sellerUsername ,username));
         cart.clear();
