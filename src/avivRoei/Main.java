@@ -39,47 +39,20 @@ public class Main {
                     System.out.println("exit");
                     break;
                 case 1:
-                    System.out.print("Enter seller username: ");
-                    String sellerUsername = scanner.next();
-                    System.out.print("Enter seller password: ");
-                    String sellerPassword = scanner.next();
-                    if (manager.addSeller(sellerUsername, sellerPassword)) {
-                        System.out.println("Seller added successfully.");
-                    } else {
-                        System.out.println("Username already taken.");
-                    }
+                    addSeller(manager, scanner);
                     break;
                 case 2:
-                    System.out.print("Enter buyer username: ");
-                    String buyerUsername = scanner.next();
-                    System.out.print("Enter buyer password: ");
-                    String buyerPassword = scanner.next();
-                    System.out.print("Enter buyer address: ");
-                    String buyerAddress = scanner.next();
-                    if (manager.addBuyer(buyerUsername, buyerPassword,buyerAddress)) {
-                        System.out.println("Buyer added successfully.");
-                    } else {
-                        System.out.println("Username already taken.");
-                    }
+                    addBuyer(manager, scanner);
                     break;
                 case 3:
-                    System.out.print("Enter seller username: ");
-                    String sellerForProduct = scanner.next();
-                    System.out.print("Enter product name: ");
-                    String productName = scanner.next();
-                    System.out.print("Enter product price: ");
-                    double productPrice = scanner.nextDouble();
-                    if (manager.addProductToSeller(sellerForProduct, productName, productPrice)) {
-                        System.out.println("Product added successfully.");
-                    } else {
-                        System.out.println("Seller not found.");
-                    }
+                    addProductToSeller(manager, scanner);
                     break;
                 case 4:
-                   addProductBuyer();
+                    addProductToBuyerCart(manager, scanner);
+
                     break;
                 case 5:
-                    chooseBuyer();
+                    checkoutBuyerCart(manager, scanner);
                     break;
                 case 6:
                     manager.displayBuyers();
@@ -95,6 +68,72 @@ public class Main {
             System.out.println();
         } while (choice != 0);
         scanner.close();
+    }
+
+    private static void addSeller(Manager manager, Scanner scanner) {
+        while (true) {
+            System.out.print("Enter seller username: ");
+            String sellerUsername = scanner.next();
+            System.out.print("Enter seller password: ");
+            String sellerPassword = scanner.next();
+            if (manager.addSeller(sellerUsername, sellerPassword)) {
+                System.out.println("Seller added successfully.");
+                break;
+            } else {
+                System.out.println("Username already taken. Please enter a different username.");
+            }
+        }
+    }
+    private static void addBuyer(Manager manager,Scanner scanner) {
+        while (true) {
+            System.out.print("Enter buyer username: ");
+            String buyerUsername = scanner.next();
+            System.out.print("Enter buyer password: ");
+            String buyerPassword = scanner.next();
+            System.out.print("Enter buyer address: ");
+            String buyerAddress = scanner.next();
+            if (manager.addBuyer(buyerUsername, buyerPassword,buyerAddress)) {
+                System.out.println("Buyer added successfully.");
+                break;
+            } else {
+                System.out.println("Username already taken. Please enter a different username.");
+            }
+        }
+    }
+    private static void addProductToSeller(Manager manager, Scanner scanner) {
+        System.out.print("Enter seller username: ");
+        String sellerUsername = scanner.next();
+        System.out.print("Enter product name: ");
+        String productName = scanner.next();
+        System.out.print("Enter product price: ");
+        double productPrice = scanner.nextDouble();
+        scanner.nextLine(); // Consume newline
+        if (manager.addProductToSeller(sellerUsername, productName, productPrice)) {
+            System.out.println("Product added successfully.");
+        } else {
+            System.out.println("Seller not found.");
+        }
+    }
+    private static void addProductToBuyerCart(Manager manager, Scanner scanner) {
+        System.out.print("Enter buyer username: ");
+        String buyerUsername = scanner.next();
+        System.out.print("Enter seller username: ");
+        String sellerUsername = scanner.next();
+        manager.displaySellerProducts(sellerUsername);
+        System.out.print("Enter product name: ");
+        String productName = scanner.next();
+        if (manager.addProductToBuyerCart(buyerUsername, sellerUsername, productName)) {
+            System.out.println("Product added to cart successfully.");
+        } else {
+            System.out.println("Buyer, seller, or product not found.");
+        }
+    }
+    private static void checkoutBuyerCart(Manager manager, Scanner scanner) {
+        System.out.print("Enter buyer username: ");
+        String buyerUsername = scanner.next();
+        System.out.print("Enter seller username: ");
+        String sellerUsername = scanner.next();
+        manager.checkoutBuyerCart(buyerUsername, sellerUsername);
     }
 
 
@@ -113,5 +152,7 @@ public class Main {
             String buyerName = scanner.next();
 
         }
+
+
     }
 

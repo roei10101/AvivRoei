@@ -34,6 +34,40 @@ public class Manager {
         }
         return false; // Seller not found
     }
+    public boolean addProductToBuyerCart(String buyerUsername, String sellerUsername, String productName) {
+        Buyer buyer = null;
+        for (Buyer b : buyers) {
+            if (b.getUsername().equals(buyerUsername)) {
+                buyer = b;
+                break;
+            }
+        }
+        if (buyer == null) {
+            return false; // Buyer not found
+        }
+
+        for (Seller seller : sellers) {
+            if (seller.getUsername().equals(sellerUsername)) {
+                for (Product product : seller.getProducts()) {
+                    if (product.getName().equals(productName)) {
+                        buyer.addToCart(product);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false; // Seller or product not found
+    }
+
+    public void checkoutBuyerCart(String buyerUsername, String sellerUsername) {
+        for (Buyer buyer : buyers) {
+            if (buyer.getUsername().equals(buyerUsername)) {
+                buyer.checkout(sellerUsername);
+                return;
+            }
+        }
+        System.out.println("Buyer not found.");
+    }
 
     private boolean isUsernameTaken(String username) {
         for (Seller seller : sellers) {
@@ -47,6 +81,18 @@ public class Manager {
             }
         }
         return false;
+    }
+    public void displaySellerProducts(String sellerUsername) {
+        for (Seller seller : sellers) {
+            if (seller.getUsername().equals(sellerUsername)) {
+                System.out.println("Products of " + sellerUsername + ":");
+                for (Product product : seller.getProducts()) {
+                    System.out.println(product);
+                }
+                return;
+            }
+        }
+        System.out.println("Seller not found.");
     }
 
     public void displaySellers() {
