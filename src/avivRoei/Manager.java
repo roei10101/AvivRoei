@@ -59,10 +59,10 @@ public class Manager {
         return false; // Seller or product not found
     }
 
-    public void checkoutBuyerCart(String buyerUsername, String sellerUsername) {
+    public void checkoutBuyerCart(String buyerUsername) {
         for (Buyer buyer : buyers) {
             if (buyer.getUsername().equals(buyerUsername)) {
-                buyer.checkout(sellerUsername);
+                buyer.checkout();
                 return;
             }
         }

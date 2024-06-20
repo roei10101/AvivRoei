@@ -131,9 +131,9 @@ public class Main {
     private static void checkoutBuyerCart(Manager manager, Scanner scanner) {
         System.out.print("Enter buyer username: ");
         String buyerUsername = scanner.next();
-        System.out.print("Enter seller username: ");
-        String sellerUsername = scanner.next();
-        manager.checkoutBuyerCart(buyerUsername, sellerUsername);
+        //System.out.print("Enter seller username: ");
+        //String sellerUsername = scanner.next();
+        manager.checkoutBuyerCart(buyerUsername);
     }
 
 }

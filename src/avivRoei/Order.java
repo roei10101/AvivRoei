@@ -11,11 +11,11 @@ public class Order {
     private String buyerUsername;
 
     // Constructor
-    public Order(ArrayList<Product> products, Date orderDate, double totalAmount, String sellerUsername, String buyerUsername) {
+    public Order(ArrayList<Product> products, Date orderDate, double totalAmount, String buyerUsername) {
         this.products = products;
         this.orderDate = orderDate;
         this.totalAmount = totalAmount;
-        this.sellerUsername = sellerUsername;
+        //this.sellerUsername = sellerUsername;
         this.buyerUsername = buyerUsername;
     }
 
@@ -39,7 +39,6 @@ public class Order {
                 "products=" + products +
                 ", orderDate=" + orderDate +
                 ", totalAmount=" + totalAmount +
-                ", sellerUsername='" + sellerUsername + '\'' +
                 ", buyerUsername='" + buyerUsername + '\'' +
                 '}';
     }

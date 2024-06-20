@@ -44,7 +44,7 @@ public class Buyer {
         cart.add(product);
     }
 
-    public void checkout(String sellerUsername) {
+    public void checkout() {
         if (cart.isEmpty()) {
             System.out.println("Cart is empty. Nothing to checkout.");
             return;
@@ -56,11 +56,11 @@ public class Buyer {
             total += product.getPrice();
         }
         System.out.println("Total amount: $" + total);
-        System.out.println("Seller: " + sellerUsername);
+        //System.out.println("Seller: " + sellerUsername);
         System.out.println("Buyer: " + username);
         System.out.println("Address: " + address);
 
-        orderHistory.add(new Order(new ArrayList<>(cart), new Date(), total, sellerUsername ,username));
+        orderHistory.add(new Order(new ArrayList<>(cart), new Date(), total ,username));
         cart.clear();
         System.out.println("Checkout complete. Cart is now empty.");
     }
